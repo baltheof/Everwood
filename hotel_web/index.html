@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>EverWood | Forest Escape</title>
+</head>
+<body>
+    <header class="header">
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- -------------------------NAVBAR START---------------------------------- -->
+<nav>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="img/logo3.png" alt="logo">
+            </a>
+        </div>
+        <div class="nav-menu-btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+        </div>
+    </div>
+    <ul class="nav-link" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#Services">Services</a></li>
+        <li><a href="#Rooms">Rooms</a></li>
+        <li><a href="http://localhost/hotel_web/signin/signin.php">Sign Up</a></li>
+    </ul>
+    <!-- Book Now button -->
+    <button class="btn nav-btn">Book Now</button>
+
+    <!-- Favorite button -->
+    <button class="btn1 nav-btn-favorite">Favorites</button>
+</nav>
+
+<!-- Favorite Popup -->
+<div id="favorite-popup" class="popup">
+    <div class="popup-content">
+        <span id="close-favorite" class="close-btn">&times;</span>
+        <h2>Your Favorites</h2>
+        <div id="favorite-rooms">
+            <!-- Favorite rooms will be populated here -->
+        </div>
+    </div>
+</div>
+
+<!-- Book Now Popup -->
+<div id="book-now-popup" class="popup">
+    <div class="popup-content">
+        <span id="close-book-now" class="close-btn">&times;</span>
+        <h2>Book Now</h2>
+        <div id="room-details">
+            <!-- Room details will be populated here -->
+        </div>
+        <h3>Saved Rooms</h3>
+        <div id="saved-rooms">
+            <!-- Saved rooms will appear here -->
+        </div>
+        <button id="add-room" class="btn">Add New Room</button>
+    </div>
+</div>
+
+<!-- Add Room Form Popup -->
+<div id="add-room-popup" class="popup">
+    <div class="popup-content">
+        <span id="close-add-room" class="close-btn">&times;</span>
+        <h2>Add a New Room</h2>
+        <form id="add-room-form">
+            <label for="room-name">Room Name:</label>
+            <input type="text" id="room-name" required>
+
+            <label for="room-price">Price:</label>
+            <input type="text" id="room-price" required>
+
+            <label for="room-description">Description:</label>
+            <textarea id="room-description" required></textarea>
+
+            <label for="room-image">Image URL:</label>
+            <input type="file" id="room-image" required>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- -------------------------NAVBAR END------------------------------------ -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- -------------------------HEADER START---------------------------------- -->
+
+        <div class="section-container header-container" id="home">
+            <p>Simple - Unique - Friendly</p>
+            <h1>Make Yourself At Home In <br/> Our <span>Tree</span> Houses</h1>
+        </div>
+
+<!-- -------------------------HEADER END---------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- -------------------------BOOKING START--------------------------------- -->
+
+<SECTION class="section-container booking-container">
+    <form action="/" class="booking-form" id="booking-form">
+        <!-- Check-in -->
+        <div class="input-group2">
+            <span><i class="ri-calendar-2-fill"></i></span>
+            <div>
+                <label for="check-in">CHECK IN</label>
+                <input type="DATE" id="check-in" placeholder="check in" required/>
+            </div>
+        </div>
+
+        <!-- Check-out -->
+        <div class="input-group2">
+            <span><i class="ri-calendar-2-fill"></i></span>
+            <div>
+                <label for="check-out">CHECK OUT</label>
+                <input type="date" id="check-out" placeholder="check out" required/>
+            </div>
+        </div>
+
+        <!-- Guest -->
+        <div class="input-group2">
+            <span><i class="ri-user-fill"></i></span>
+            <div>
+                <label for="guest">GUEST</label>
+                <input type="number" id="guest" placeholder="guest" required/>
+            </div>
+        </div>
+
+        <!-- Check-out Button -->
+        <div class="input-group2 input-btn">
+            <button type="submit" class="btn2">CHECK OUT</button>
+        </div>
+    </form>
+</SECTION>
+
+<!-- Checkout Popup -->
+<div id="checkout-popup" class="checkout-popup">
+    <div class="popup-content2">
+        <span id="close-popup2" class="close-btn2">&times;</span>
+        <h2>Booking Summary</h2>
+        <p id="popup-check-in">Check-In: </p>
+        <p id="popup-check-out">Check-Out: </p>
+        <p id="popup-guest">Guest: </p>
+        <div id="error-message" style="color: red; display: none;">Please fill out all fields.</div>
+    </div>
+</div>
+
+<div id="room-selection-popup" class="popup-container">
+    <button id="close-room-selection" class="close-btn">X</button>
+    <div class="popup-content">
+        
+        <h2>Select Your Room</h2>
+        <div id="room-selection-container"></div>
+    </div>
+</div>
+
+<div id="book-now-popup" class="popup-container">
+    <div class="popup-content">
+        <h2>Book Now</h2>
+        <div id="room-details"></div>
+        <button id="close-popup">Close</button>
+    </div>
+</div>
+
+
+
+<!-- -------------------------BOOKING END----------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------ABOUT START--------------------------------- -->
+<br/>
+<br/>
+        <section class="section-container about-container" id="about">
+            <div class="about-img">
+                <img src="img/3/dining (1).jpg" alt="about">
+            </div>
+            <div class="about-content">
+                <p class="section-subheader">ABOUT US</p>
+
+                <H2 section="section-header">Escape to the Trees, Stay with Ease</H2>
+                <p class="section-description">Escape to EverWood, where cozy treehouses meet the tranquility of nature.<br/> Nestled in a peaceful forest, our retreat offers the perfect blend of relaxation and adventure.<br/><br/>
+
+                    Whether you’re unwinding in the comfort of your treehouse or exploring the natural surroundings,<br/> EverWood provides an experience designed for ultimate comfort and rejuvenation.<br/><br/>
+                    
+                    Enjoy the charm of the trees, the soothing sounds of nature, and the serenity of a secluded getaway,<br/> all while having your comfort as our top priority. At EverWood, every moment is an opportunity<br/> to relax, reconnect, and recharge.<br/>
+                    
+                    </p>
+
+                
+            </div>
+        </section>    
+<!-- ---------------------------ABOUT END----------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+<BR/>
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------ROOM 1 START-------------------------------- -->
+        <section class="section-container room-container" id="Rooms">
+            <p class="section-subheader">OUR LIVING ROOM</p>
+            <h2 class="section-header">Relax and Feel at Home</h2>
+                <div class="room-grid">
+
+
+<!-- ------------------------------------------ -->
+<!-- ---------------FIRST START---------------- -->
+        <div class="room-card">
+            <div class="room-card-img">
+                <img src="img/2/room2.jpg" alt="livingroom">
+                <div class="room-card-icons">
+                    <button class="favorite-btn" data-room-id="1" data-room-name="A-Shaped Treehouse" data-room-description="Stay in style with a cozy, triangular A-frame design" data-room-price="$200 - $400 per night" data-room-image="img/2/room2.jpg">❤️</button>
+                    <!-- <button class="paint-btn" data-room-id="1" data-room-name="A-Shaped Treehouse" data-room-description="Stay in style with a cozy, triangular A-frame design" data-room-price="$200 - $400 per night" data-room-image="img/2/room2.jpg">
+                        <i class="ri-check-fill"></i>
+                    </button> -->
+                </div>
+            </div>
+            <div class="room-card-details">
+                <h4>A-Shaped Treehouse</h4>
+                <p>Stay in style with a cozy, triangular A-frame design that’s both modern and naturally inspired.</p>
+                <h5>Starting from <span>$200 - $400 per night</span></h5>
+                <button class="btn" data-room-name="A-Shaped Treehouse" data-price="$200" data-description="A cozy treehouse" data-image="img/2/room2.jpg">Book Now</button>
+            </div>
+        </div>
+
+
+<!-- ---------------FIRST END------------------ -->
+<!-- ------------------------------------------ -->
+
+
+<!-- ------------------------------------------ -->
+<!-- --------------SECOND START---------------- -->
+        <div class="room-card">
+            <div class="room-card-img">
+                <img src="img/1/dining2.jpg" alt="livingroom">
+                <div class="room-card-icons">
+                    <button class="favorite-btn" data-room-id="2" data-room-name="Adventure Treehouses" data-room-description="Elevate your stay with thrilling rope bridges, ladders   and ziplines, designed for an unforgettable forest adventure." data-room-price="$150 - $300 per night" data-room-image="img/2/room2.jpg">❤️</button>
+                    <!-- <button class="paint-btn" data-room-id="1" data-room-name="Adventure Treehouses" data-room-description="Elevate your stay with thrilling rope bridges, ladders   and ziplines, designed for an unforgettable forest adventure." data-room-price="$150 - $300 per night" data-room-image="img/2/room2.jpg">
+                        <i class="ri-check-fill"></i>
+                    </button>
+                    </button> -->
+                </div>
+            </div>
+            <div class="room-card-details">
+                <h4>Adventure Treehouses</h4>
+                <p>Elevate your stay with thrilling rope bridges, ladders   and ziplines, designed for an unforgettable forest adventure.</p>
+                <h5>Starting from <span>$200 - $400 per night</span></h5>
+                <button class="btn" data-room-name="$150 - $300 per night" data-price="$200" data-description="A cozy treehouse" data-image="img/2/room2.jpg">Book Now</button>
+            </div>
+        </div>
+
+<!-- ---------------SECOND END----------------- -->
+<!-- ------------------------------------------ -->
+
+
+<!-- ------------------------------------------ -->
+<!-- ---------------THIRD START---------------- -->
+            <div class="room-card">
+                <div class="room-card-img">
+                    <img src="img/3/livingroom (2).jpg" alt="livingroom">
+                    <div class="room-card-icons">
+                        <button class="favorite-btn" data-room-id="3" data-room-name="Rustic Treehouses" data-room-description="Reconnect with the wild in a charming, eco-friendly<br/>
+                        retreat crafted from natural materials and simple comforts." data-room-price="$100 - $200 per night" data-room-image="img/3/livingroom (2).jpg">❤️</button>
+                        <!-- <button class="paint-btn" data-room-id="1" data-room-name="Rustic Treehouses" data-room-description="Reconnect with the wild in a charming, eco-friendly<br/>
+                        retreat crafted from natural materials and simple comforts." data-room-price="$100 - $200 per night" data-room-image="img/3/livingroom (2).jpg">
+                            <i class="ri-check-fill"></i>
+                        </button> -->
+                    </div>
+                </div>
+                <div class="room-card-details">
+                    <h4>Rustic Treehouses</h4>
+                    <p>Stay in style with a cozy, triangular A-frame design that’s both modern and naturally inspired.</p>
+                    <h5>Starting from <span>$200 - $400 per night</span></h5>
+                    <button class="btn" data-room-name="Rustic Treehouses" data-price="$100 - $200 per night" data-description="Reconnect with the wild in a charming, eco-friendly<br/>
+                    retreat crafted from natural materials and simple comforts." data-image="img/3/livingroom (2).jpg">Book Now</button>
+                </div>
+            </div>
+
+
+<!-- ---------------THIRD START---------------- -->
+<!-- ------------------------------------------ --> 
+        </section>
+
+<!-- ---------------------------ROOM 1 END-------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------ROOM2 START--------------------------------- -->
+
+        <section class="section-container room-container">
+                <div class="room-grid">
+
+<!-- ------------------------------------------ -->
+<!-- ---------------FIRST START---------------- -->
+        <div class="room-card">
+            <div class="room-card-img">
+                <img src="img/2/livingroom (1).jpg" alt="livingroom">
+                <div class="room-card-icons">
+                    <button class="favorite-btn" data-room-id="4" data-room-name="Tiny House Treehouse" data-room-description="A compact treehouse with smart storage and multi-use furniture,<br/> perfect for tiny home living in nature." data-room-price="$50 - $200 per night" data-room-image="img/2/livingroom (1).jpg">❤️</button>
+                    <!-- <button class="paint-btn" data-room-id="1" data-room-name="Tiny House Treehouse" data-room-description="A compact treehouse with smart storage and multi-use furniture,<br/> perfect for tiny home living in nature." data-room-price="$50 - $200 per night" data-room-image="img/2/livingroom (1).jpg">
+                        <i class="ri-check-fill"></i>
+                    </button> -->
+                </div>
+            </div>
+            <div class="room-card-details">
+                <h4>A-Shaped Treehouse</h4>
+                <p>A compact treehouse with smart storage and multi-use furniture,<br/> perfect for tiny home living in nature..</p>
+                <h5>Starting from <span>$50 - $200 per night</span></h5>
+                <button class="btn" data-room-name="Tiny House Treehouse" data-price="$50 - $200 per night" data-description="A compact treehouse with smart storage and multi-use furniture,<br/> perfect for tiny home living in nature." data-image="img/2/livingroom (1).jpg">Book Now</button>
+            </div>
+        </div>
+
+
+<!-- ---------------FIRST END------------------ -->
+<!-- ------------------------------------------ -->
+
+
+<!-- ------------------------------------------ -->
+<!-- --------------SECOND START---------------- -->
+        <div class="room-card">
+            <div class="room-card-img">
+                <img src="img/1/yard3.jpg" alt="livingroom">
+                <div class="room-card-icons">
+                    <button class="favorite-btn" data-room-id="5" data-room-name="Multi-Level Treehouse" data-room-description="A spacious treehouse with multiple levels and connected bridges, <br/>offering distinct areas like sleeping, dining, and lounging." data-room-price="$150 - $300 per night" data-room-image="img/1/yard3.jpg">❤️</button>
+                    <!-- <button class="paint-btn" data-room-id="1" data-room-name="Multi-Level Treehouse" data-room-description="A spacious treehouse with multiple levels and connected bridges, <br/>offering distinct areas like sleeping, dining, and lounging." data-room-price="$150 - $300 per night" data-room-image="img/1/yard3.jpg">
+                        <i class="ri-check-fill"></i>
+                    </button> -->
+                </div>
+            </div>
+            <div class="room-card-details">
+                <h4>Multi-Level Treehouse</h4>
+                <p>A spacious treehouse with multiple levels and connected bridges, <br/>offering distinct areas like sleeping, dining, and lounging..</p>
+                <h5>Starting from <span>$150 - $300 per night</span></h5>
+                <button class="btn" data-room-name="Multi-Level Treehouse" data-price="$150 - $300 per night" data-description="A spacious treehouse with multiple levels and connected bridges, <br/>offering distinct areas like sleeping, dining, and lounging. " data-image="img/1/yard3.jpg">Book Now</button>
+            </div>
+        </div>
+<!-- ---------------SECOND END----------------- -->
+<!-- ------------------------------------------ -->
+
+
+<!-- ------------------------------------------ -->
+<!-- ---------------THIRD START---------------- -->
+        <div class="room-card">
+            <div class="room-card-img">
+                <img src="img/3/yard2 (1).jpg" alt="livingroom">
+                <div class="room-card-icons">
+                    <button class="favorite-btn" data-room-id="6" data-room-name="Rustic Treehouses" data-room-description="Reconnect with the wild in a charming, eco-friendly<br/>retreat crafted from natural materials and simple comforts." data-room-price="$100 - $200 per night" data-room-image="img/3/yard2 (1).jpg">❤️</button>
+                    <!-- <button class="paint-btn" data-room-id="1" data-room-name="Rustic Treehouses" data-room-description="Reconnect with the wild in a charming, eco-friendly<br/>retreat crafted from natural materials and simple comforts." data-room-price="$100 - $200 per night" data-room-image="img/3/yard2 (1).jpg">
+                        <i class="ri-check-fill"></i>
+                    </button> -->
+                </div>
+            </div>
+            <div class="room-card-details">
+                <h4>Rustic Treehouses</h4>
+                <p>Reconnect with the wild in a charming, eco-friendly<br/>
+                    retreat crafted from natural materials and simple comforts.</p>
+                <h5>Starting from <span>$100 - $200 per night</span></h5>
+                <button class="btn" data-room-name="Rustic Treehouses" data-price="$100 - $200 per night" data-description="Reconnect with the wild in a charming, eco-friendly<br/>retreat crafted from natural materials and simple comforts." data-image="img/3/yard2 (1).jpg">Book Now</button>
+            </div>
+        </div>
+<!-- ---------------THIRD end---------------- -->
+<!-- ------------------------------------------ --> 
+
+        </section>
+<!-- ---------------------------ROOM2 END--------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+<BR/>
+
+
+
+
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------SERVICES START--------------------------------- -->
+
+        <section class="service" id="Services">
+            <div class="section-container service-container">
+                <div class="service-content">
+                    <p class="section-subheader">SERVICES</p>
+                    <h2 class="section-header">Elevate Your Stay, Naturally</h2>
+                    <!-- ----First---- -->
+                    <ul class="service-list">
+                            <li>
+                                <span><i class="ri-shield-star-line"></i></span>
+                                Personalized Services
+                            </li>
+                        
+                        <!-- ----Second---- -->
+                        
+                            <li>
+                                <span><i class="ri-24-hours-line"></i></span>
+                                Wellness & Relaxation
+                            </li>
+                        
+                        <!-- ----third---- -->
+                        
+                            <li>
+                                <span><i class="ri-headphone-line"></i></span>
+                                Guest Services
+                            </li>
+                        
+                        <!-- ----fourth---- -->
+                        
+                            <li>
+                                <span><i class="ri-map-2-line"></i></span>
+                                Unique Experiences
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+<!-- ---------------------------SERVICES END--------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+<BR/>
+
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------RATING START--------------------------------- -->
+
+        <section class="testimonials">
+            <div class="container">
+            <div class="heading">
+                <h5 class="section-subheader">TESTIMONIALS</h5>
+                <h3>What customers say</h3>
+            </div>
+        
+            <div class="carousel">
+                <div class="carousel-item">
+                <div class="rate">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Excellent Swimming</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                <div class="admin flex">
+                    <div class="img">
+                    <img src="img/4/3.jpg" alt="">
+                    </div>
+                    <div class="text">
+                    <h3>Ayman Jensi</h3>
+                    <span>Manager</span>
+                    </div>
+                </div>
+                </div>
+        
+                <div class="carousel-item">
+                <div class="rate">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Great Experience</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                <div class="admin flex">
+                    <div class="img">
+                    <img src="img/4/1.jpg" alt="">
+                    </div>
+                    <div class="text">
+                    <h3>Ayman Jensi</h3>
+                    <span>Manager</span>
+                    </div>
+                </div>
+                </div>
+        
+                <div class="carousel-item">
+                <div class="rate">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    
+                </div>
+                <h3>Wonderful Stay</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+                <div class="admin flex">
+                    <div class="img">
+                    <img src="img/4/2.jpg" alt="">
+                    </div>
+                    <div class="text">
+                    <h3>Ayman Jensi</h3>
+                    <span>Manager</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+<!-- ---------------------------RATING END---------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+    <BR/>
+
+  
+
+<!-- ----------------------------------------------------------------------- -->
+<!-- ---------------------------BANNER START--------------------------------- -->
+
+        <section class="section-container banner-container">
+            <div class="banner-content">
+                <!-- ------FIRST------ -->
+                <div class="banner-card">
+                    <h4 class="count" data-count="25">0</h4>
+                    <p>Properties Available</p>
+                </div>
+                <!-- ------SECOND------ -->
+                <div class="banner-card">
+                    <h4 class="count" data-count="25">0</h4>
+                    <p>Properties Available</p>
+                </div>
+                <!-- ------THIRD------ -->
+                <div class="banner-card">
+                    <h4 class="count" data-count="350">0</h4>
+                    <p>Bookings Completed</p>
+                </div>
+                <!-- ------FOURTH------ -->
+                <div class="banner-card">
+                    <h4 class="count" data-count="600">0</h4>
+                    <p>Happy Customers</p>
+                </div>
+            </div>
+        </section>
+
+<!-- ---------------------------BANNER END--------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+
+<section class="testimonials map top">
+    <div class="container">
+    <div class="heading">
+        <p class="section-subheader">FIND US</p>
+        <h2 >Find us, In The Heart Of The Forest</h2>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14131.036667732067!2d85.32395955!3d27.69383745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1638187678048!5m2!1sen!2snp" width="600" height="450" style="border:0;"
+      allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    </div>
+</section>
+
+<!-- ---------------------------FOOTER START-------------------------------- -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo3.png" alt="Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#Services">Services</a></li>
+                    <li><a href="#Rooms">Rooms</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com" target="_blank" class="footer-social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank" class="footer-social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="footer-social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TreeHouse Hotel. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- ---------------------------FOOTER END---------------------------------- -->
+
+
+
+
+    </header>
+
+
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/main.js"></script>
+    <script src="js/scrollreveal.js"></script>
+    <script src="js/add-delete.js"></script>
+    <script src="js/favorite.js"></script>
+    <script src="js/check-out.js"></script>
+
+    <script>
+            // Wait for the DOM content to load
+            document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.querySelector('nav'); // Select the <nav> element
+
+            // Listen for scroll events
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) { // Scroll threshold (50px)
+                    navbar.classList.add('scrolled'); // Add 'scrolled' class
+                } else {
+                    navbar.classList.remove('scrolled'); // Remove 'scrolled' class
+                }
+            });
+        });
+
+    </script>
+
+<script>
+    // Function to animate numbers
+    const countUpNumbers = () => {
+        const counters = document.querySelectorAll('.count');
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-count');
+            let count = 0;
+            const speed = 2000; // Duration of the animation in milliseconds
+            const increment = target / (speed / 100); // How much to increment each step
+
+            // Start counting from 0 with a delay
+            const animate = setInterval(() => {
+                if (count < target) {
+                    counter.innerText = Math.ceil(count);
+                    count += increment;
+                } else {
+                    counter.innerText = target; // Ensure the final number is set correctly
+                    clearInterval(animate);
+                }
+            }, 100); // Update every 100 milliseconds
+        });
+    };
+
+    // Set up the IntersectionObserver to trigger count-up on scroll
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Wait for 3 seconds before starting the count-up
+                setTimeout(() => {
+                    countUpNumbers();
+                }, 3000); // 3000 milliseconds = 3 seconds
+
+                observer.unobserve(entry.target); // Stop observing once the animation starts
+            }
+        });
+    }, {
+        threshold: 0.5 // Start counting when 50% of the section is in view
+    });
+
+    // Observe the section containing the counters
+    const section = document.querySelector('.banner-container');
+    observer.observe(section);
+</script>
+
+
+
+
+</body>
+</html>
